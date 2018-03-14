@@ -12,7 +12,7 @@
  */
 
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'samanage-react-router'
 import ExecutionEnvironment from 'exenv'
 import PropTypes from "prop-types"
 

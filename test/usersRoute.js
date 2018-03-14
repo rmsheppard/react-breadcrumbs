@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route }from 'react-router';
+import { Route } from 'samanage-react-router';
 import Breadcrumbs from '../index.jsx';
 import test from 'tape';
 import ReactTestUtils from 'react-addons-test-utils';
