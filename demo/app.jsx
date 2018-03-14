@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Breadcrumbs from '../index.jsx';
-import { IndexRoute, Router, Route, Link } from 'react-router'
+import { IndexRoute, Router, Route, Link } from 'samanage-react-router'
 
 var userlist = [
   {id:"1", name:"John"},

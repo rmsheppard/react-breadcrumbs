@@ -1,7 +1,7 @@
 import React from 'react'
-import { Router, Route, NoMatch, IndexRoute } from 'react-router'
+import { Router, Route, NoMatch, IndexRoute } from 'samanage-react-router'
 import { App, Info, Users, User, UserDetails } from './app.jsx';
-import { hashHistory } from 'react-router'
+import { hashHistory } from 'samanage-react-router'
 
 export default (
   <Router history={hashHistory}>
