@@ -4,6 +4,7 @@
   "description": "Automatic breadcrumbs for react-router",
   "main": "index.js",
   "scripts": {
+    "babel": "babel index.jsx -o index.js",
     "preversion": "make prepublish",
     "lint": "eslint index.jsx",
     "precommit": "npm run lint",
@@ -63,6 +64,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-register": "^6.23.0",
     "babel-tape-runner": "^2.0.0",
+    "babel-watch": "^2.0.7",
     "eslint": "^3.17.0",
     "eslint-config-xo": "^0.18.1",
     "eslint-config-xo-react": "^0.11.1",

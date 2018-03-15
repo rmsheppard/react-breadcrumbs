@@ -1,6 +1,20 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = (function () {
+  function defineProperties(target, props) {
+   for (var i = 0; i < props.length; i++) {
+   var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) {
+descriptor.writable = true;
+} Object.defineProperty(target, descriptor.key, descriptor);
+ }
+ } return function (Constructor, protoProps, staticProps) {
+  if (protoProps) {
+defineProperties(Constructor.prototype, protoProps);
+} if (staticProps) {
+defineProperties(Constructor, staticProps);
+} return Constructor;
+};
+})();
 
 var _react = require('react');
 
@@ -16,13 +30,29 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { 'default': obj };
+}
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError('Cannot call a class as a function');
+  }
+}
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');
+  } return call && (typeof call === 'object' || typeof call === 'function') ? call : self;
+}
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* global window */
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== 'function' && superClass !== null) {
+    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+  } subClass.prototype = Object.create(superClass && superClass.prototype, { 'constructor': { 'value': subClass, 'enumerable': false, 'writable': true, 'configurable': true } }); if (superClass) {
+   Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+ }
+} /* global window */
 
 /**
  * @class Breadcrumbs
@@ -35,7 +65,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  */
 
-var Breadcrumbs = function (_React$Component) {
+var Breadcrumbs = (function (_React$Component) {
   _inherits(Breadcrumbs, _React$Component);
 
   function Breadcrumbs(props) {
@@ -48,8 +78,8 @@ var Breadcrumbs = function (_React$Component) {
   }
 
   _createClass(Breadcrumbs, [{
-    key: '_getDisplayName',
-    value: function _getDisplayName(route) {
+    'key': '_getDisplayName',
+    'value': function _getDisplayName(route) {
       var name = null;
 
       if (typeof route.getDisplayName === 'function') {
@@ -77,13 +107,13 @@ var Breadcrumbs = function (_React$Component) {
       return name;
     }
   }, {
-    key: '_addKeyToElement',
-    value: function _addKeyToElement(el) {
+    'key': '_addKeyToElement',
+    'value': function _addKeyToElement(el) {
       return el && !el.key && el.type ? Object.assign({}, el, { 'key': Math.random() * 100 }) : el;
     }
   }, {
-    key: '_addKeyToArrayElements',
-    value: function _addKeyToArrayElements(item) {
+    'key': '_addKeyToArrayElements',
+    'value': function _addKeyToArrayElements(item) {
       var _this2 = this;
 
       return item.map(function (el) {
@@ -91,8 +121,8 @@ var Breadcrumbs = function (_React$Component) {
       });
     }
   }, {
-    key: '_processCustomElements',
-    value: function _processCustomElements(items) {
+    'key': '_processCustomElements',
+    'value': function _processCustomElements(items) {
       var _this3 = this;
 
       return items.map(function (el) {
@@ -106,8 +136,8 @@ var Breadcrumbs = function (_React$Component) {
       });
     }
   }, {
-    key: '_appendAndPrependElements',
-    value: function _appendAndPrependElements(originalBreadCrumbs) {
+    'key': '_appendAndPrependElements',
+    'value': function _appendAndPrependElements(originalBreadCrumbs) {
       var crumbs = [];
       var appendAndPrepend = this._processCustomElements([originalBreadCrumbs.shift(), originalBreadCrumbs.pop()]);
       if (appendAndPrepend[0]) {
@@ -125,8 +155,8 @@ var Breadcrumbs = function (_React$Component) {
       });
     }
   }, {
-    key: '_resolveRouteName',
-    value: function _resolveRouteName(route) {
+    'key': '_resolveRouteName',
+    'value': function _resolveRouteName(route) {
       var name = this._getDisplayName(route);
       if (!name && route.breadcrumbName) {
         name = route.breadcrumbName;
@@ -137,9 +167,13 @@ var Breadcrumbs = function (_React$Component) {
       return name;
     }
   }, {
-    key: '_processRoute',
-    value: function _processRoute(route, routesLength, lastCrumb, createElement) {
+    'key': '_processRoute',
+    'value': function _processRoute(route, routesLength, lastCrumb, createElement) {
       var _this4 = this;
+
+      if (route.displayParam) {
+        return _this4.props.params[route.displayParam];
+      }
 
       // If there is no route path defined and we are set to hide these then do so
       if (!route.path && this.props.hideNoPath) {
@@ -232,8 +266,8 @@ var Breadcrumbs = function (_React$Component) {
       return _react2.default.createElement(this.props.itemElement, { 'className': itemClass, 'key': Math.random() * 100 }, link, separator);
     }
   }, {
-    key: '_buildRoutes',
-    value: function _buildRoutes(routes, createElement, prepend, append) {
+    'key': '_buildRoutes',
+    'value': function _buildRoutes(routes, createElement, prepend, append) {
       var _this5 = this;
 
       var crumbs = [];
@@ -298,14 +332,14 @@ var Breadcrumbs = function (_React$Component) {
       return _react2.default.createElement(this.props.wrapperElement, { 'className': this.props.customClass || this.props.wrapperClass }, crumbs);
     }
   }, {
-    key: 'render',
-    value: function render() {
+    'key': 'render',
+    'value': function render() {
       return this._buildRoutes(this.props.routes, this.props.createElement, this.props.prepend, this.props.append);
     }
   }]);
 
   return Breadcrumbs;
-}(_react2.default.Component);
+})(_react2.default.Component);
 
 /**
  * @property PropTypes
@@ -313,8 +347,8 @@ var Breadcrumbs = function (_React$Component) {
  * @type {{separator: *, createElement: *, displayMissing: *, wrapperElement: *, wrapperClass: *, itemElement: *, itemClass: *, activeItemClass: *,  customClass: *,excludes: *, append: *, prepend: *, params: *, Link: *}}
  */
 
-
 Breadcrumbs.propTypes = {
+  'displayParam': _propTypes2.default.string,
   'params': _propTypes2.default.object.isRequired,
   'prepend': _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.bool]),
   'append': _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.bool]),
@@ -340,7 +374,7 @@ Breadcrumbs.propTypes = {
    * @description sets the default values for propTypes if they are not provided
    * @type {{separator: string, displayMissing: boolean, wrapperElement: string, itemElement: string, wrapperClass: string, customClass: string, prepend: false, append: false}}
    */
-};Breadcrumbs.defaultProps = {
+}; Breadcrumbs.defaultProps = {
   'prepend': false,
   'append': false,
   'separator': ' > ',
